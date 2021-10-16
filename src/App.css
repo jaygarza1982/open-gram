@@ -1,7 +1,7 @@
 
 .container {
   width: 500px;
-  margin: 10px;
+  margin: 8px;
 }
 
 .post-header-grid {
@@ -18,13 +18,20 @@
 
 .post-username {
   font-weight: 600;
-}
-
-.post-caption {
-  padding: 10px;
+  display: inline;
+  margin-right: 5px;
 }
 
 .post-image {
   width: 500px;
   height: 600px;
+}
+
+.post-caption-items {
+ padding: 0px 8px 8px 8px; 
+}
+
+.post-buttons button svg {
+  width: 1.6em !important;
+  height: 1.6em !important;
 }

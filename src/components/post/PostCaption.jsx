@@ -1,8 +1,11 @@
 import React from 'react';
 
-const PostCaption = ({body}) => {
+const PostCaption = ({body, username}) => {
     return (
         <div className="post-caption">
+            <div className="post-username">
+                {username}
+            </div>
             {body}
         </div>
     )
