@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { Paper } from '@mui/material';
+import PostHeader from './components/post/PostHeader';
+import PostCaption from './components/post/PostCaption';
+import PostImage from './components/post/PostImage';
+import Post from './components/post/Post';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <Paper>
+          <Post
+            username={'Johnny.5'}
+            profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+            imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+            body={'Test text in body!!'}
+          />
+        </Paper>
+      </div>
     </div>
   );
 }
