@@ -5,7 +5,7 @@ const PostLikes = ({likedBy}) => {
         <div className='post-likes'>
             {
                 likedBy?.length > 0 ?
-                <>Liked by {likedBy.length} people</>
+                <>Liked by <strong>{likedBy.length} people</strong></>
                 :
                 <>Be the first like!</>
             }

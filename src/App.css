@@ -1,7 +1,15 @@
 
+body {
+  background-color: #798086;
+}
+
 .container {
   width: 500px;
-  margin: 8px;
+  margin: auto;
+}
+
+.post {
+  background-color: #fff;
 }
 
 .post-header-grid {
@@ -34,4 +42,13 @@
 .post-buttons button svg {
   width: 1.6em !important;
   height: 1.6em !important;
+}
+
+.post-comments {
+  color: grey;
+}
+
+.post-date {
+  color: grey;
+  font-size: 0.8rem;
 }
