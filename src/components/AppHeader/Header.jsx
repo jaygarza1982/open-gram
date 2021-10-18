@@ -1,4 +1,4 @@
-import { AddBox } from '@mui/icons-material';
+import { AddBox, Menu } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import React, { useState } from 'react';
 
@@ -12,6 +12,11 @@ const Header = ({ }) => {
             <div className="app-header-button">
                 <IconButton>
                     <AddBox />
+                </IconButton>
+            </div>
+            <div className="app-header-button">
+                <IconButton>
+                    <Menu />
                 </IconButton>
             </div>
         </div>
