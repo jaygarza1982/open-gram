@@ -1,4 +1,23 @@
 
+.app-header {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  padding: 10px;
+  position: sticky; top: 0;
+  background-color: #fff;
+  z-index: 999;
+}
+
+.app-header-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.7rem;
+}
+
+.app-header-button button svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
 .post {
   background-color: #fff;
 }
