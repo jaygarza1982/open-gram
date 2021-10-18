@@ -1,29 +1,22 @@
 import './App.css';
-import Post from './components/Post/Post';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
+import Home from './components/Home/Home';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-          <Post
-            username={'Johnny.5'}
-            profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-            imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-            body={'Test text in body!!'}
-            likedBy={['user1', 'user2', 'user3']}
-            comments={['A comment']}
-            date={new Date()}
-          />
-          <Post
-            username={'Johnny.5'}
-            profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-            imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-            body={'Second post'}
-            likedBy={[]}
-            comments={[]}
-          />
-      </div>
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/profile' component={Profile} />
+      </Switch>
+    </Router>
   );
 }
 
