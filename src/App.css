@@ -43,3 +43,7 @@
   color: grey;
   font-size: 0.8rem;
 }
+
+.post-liked {
+  color: #e90000 !important;
+}

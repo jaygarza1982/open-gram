@@ -1,12 +1,15 @@
 import { AddComment, Favorite, Share } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import React from 'react'
+import { React, useState } from 'react'
 
-const PostButtons = () => {
+const PostButtons = ({likedBy}) => {
+
+    const [currentUser] = useState('user1');
+
     return (
         <div className="post-buttons">
             <IconButton>
-                <Favorite />
+                <Favorite className={likedBy?.includes(currentUser) ? 'post-liked' : ''} />
             </IconButton>
             <IconButton>
                 <AddComment />

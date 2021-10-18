@@ -12,7 +12,7 @@ const Post = ({username, profilePicURL, imgURL, body, likedBy, comments, date}) 
         <div className='post'>
             <PostHeader picURL={profilePicURL} username={username} />
             <PostImage imgURL={imgURL} />
-            <PostButtons />
+            <PostButtons likedBy={likedBy} />
             <div className='post-caption-items'>
                 <PostLikes likedBy={likedBy} />
                 <PostCaption username={username} body={body} />

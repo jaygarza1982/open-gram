@@ -1,5 +1,4 @@
 import './App.css';
-import { Paper } from '@mui/material';
 import Post from './components/Post/Post';
 
 function App() {
