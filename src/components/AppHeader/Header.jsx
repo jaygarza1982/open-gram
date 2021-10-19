@@ -11,12 +11,12 @@ const Header = ({ }) => {
             <div className="app-header-title">{title}</div>
             <div className="app-header-button">
                 <IconButton>
-                    <AddBox />
+                    <Menu />
                 </IconButton>
             </div>
             <div className="app-header-button">
                 <IconButton>
-                    <Menu />
+                    <AddBox />
                 </IconButton>
             </div>
         </div>
