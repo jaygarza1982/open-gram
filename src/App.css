@@ -8,6 +8,15 @@
   z-index: 999;
 }
 
+.app-title-font {
+  font-family: 'Pacifico', cursive;
+}
+
+.login-title {
+  font-size: 3rem;
+  margin: 25px 0px 25px 0px;
+}
+
 .app-header-title {
   font-family: 'Pacifico', cursive;
   font-size: 1.7rem;
@@ -91,4 +100,19 @@
 .profile-post img {
   width: 100%;
   height: 100%;
+}
+
+.credential-container {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  text-align: center;
+  width: min(60%, 500px);
+}
+
+.MuiFormControl-root {
+  margin: 10px 0px 10px 0px !important;
+  width: 100%;
 }

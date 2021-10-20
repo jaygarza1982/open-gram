@@ -9,6 +9,7 @@ import {
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Header from './components/AppHeader/Header';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/profile' component={Profile} />
+        <Route path='/login' component={Login} />
       </Switch>
     </Router>
     </>
