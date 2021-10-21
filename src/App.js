@@ -10,6 +10,7 @@ import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Header from './components/AppHeader/Header';
 import Login from './components/Login/Login';
+import NavContainer from './components/NavButtons/NavContainer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/profile' component={Profile} />
         <Route path='/login' component={Login} />
       </Switch>
+      <NavContainer />
     </Router>
     </>
   );
