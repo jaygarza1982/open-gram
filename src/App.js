@@ -6,6 +6,8 @@ import {
   Route
 } from 'react-router-dom';
 
+import { RecoilRoot } from 'recoil';
+
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Header from './components/AppHeader/Header';
@@ -15,6 +17,7 @@ import NavContainer from './components/NavButtons/NavContainer';
 function App() {
   return (
     <>
+    <RecoilRoot>
     <Header />
     <Router>
       <Switch>
@@ -24,6 +27,7 @@ function App() {
       </Switch>
       <NavContainer />
     </Router>
+    </RecoilRoot>
     </>
   );
 }
