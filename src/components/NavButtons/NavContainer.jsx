@@ -2,17 +2,17 @@ import { Home, Search, AddBox } from '@mui/icons-material';
 import { IconButton, Avatar } from '@mui/material';
 import { withRouter } from 'react-router';
 import React from 'react';
-import { userAtom } from '../../atoms';
+import { navShownAtom } from '../../atoms';
 import { useRecoilState } from 'recoil';
 
 const NavContainer = props => {
 
-    const [user] = useRecoilState(userAtom);
+    const [navShown] = useRecoilState(navShownAtom);
 
     return (
         <>
             {
-                user && (
+                navShown && (
                     <div className="nav-button-container">
                         <div className="nav-button-grid">
                             <div className="nav-button">
@@ -27,7 +27,7 @@ const NavContainer = props => {
                             </div>
                             <div className="nav-button">
                                 <IconButton>
-                                    <AddBox />
+                                    <AddBox onClick={() => { props.history.push('/publish'); }} />
                                 </IconButton>
                             </div>
                             <div className="nav-button">

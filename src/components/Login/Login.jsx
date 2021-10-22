@@ -1,7 +1,7 @@
 import { Button, Paper, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { userAtom } from '../../atoms';
+import { navShownAtom, userAtom } from '../../atoms';
 import { withRouter } from 'react-router';
 
 const Login = props => {
@@ -15,11 +15,13 @@ const Login = props => {
         setLoginFields({ ...loginFields, [prop]: value });
     }
 
-    const [user, setUser] = useRecoilState(userAtom);
+    const [, setUser] = useRecoilState(userAtom);
+    const [, setNavShown] = useRecoilState(navShownAtom);
 
     const tryLogin = () => {
         try {
             setUser(loginFields.username);
+            setNavShown(true);
             props.history.push('/');
         } catch (err) {
             console.log('Could not login', err);

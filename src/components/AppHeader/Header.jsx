@@ -2,18 +2,18 @@ import { AddBox, Menu } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { userAtom } from '../../atoms';
+import { navShownAtom } from '../../atoms';
 
 const Header = ({ }) => {
 
-    const [title, setTitle] = useState('open-gram');
+    const [title] = useState('open-gram');
 
-    const [user] = useRecoilState(userAtom);
+    const [navShown] = useRecoilState(navShownAtom);
 
     return (
         <>
             {
-                user != '' && (
+                navShown && (
                     <>
                         <div className='app-header'>
                             <div className="app-header-title">{title}</div>

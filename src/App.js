@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 import Header from './components/AppHeader/Header';
 import Login from './components/Login/Login';
 import NavContainer from './components/NavButtons/NavContainer';
+import Publish from './components/Publish/Publish';
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
     <Router>
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/profile' component={Profile} />
         <Route path='/login' component={Login} />
+        <Route path='/profile' component={Profile} />
+        <Route path='/publish' component={Publish} />
       </Switch>
       <NavContainer />
     </Router>
