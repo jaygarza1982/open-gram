@@ -91,6 +91,10 @@ h1 {
  padding: 0px 8px 8px 8px; 
 }
 
+.post-caption {
+  word-break: break-word;
+}
+
 .post-buttons button svg {
   width: 1.6em !important;
   height: 1.6em !important;

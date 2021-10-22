@@ -1,15 +1,19 @@
 import { ArrowBack, Check } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
-import React, { useEffect } from 'react';
+import { IconButton, TextField } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useRecoilState } from 'recoil';
-import { navShownAtom } from '../../atoms';
+import { navShownAtom, userAtom } from '../../atoms';
+import Post from '../Post/Post';
 
 const Publish = () => {
 
     const history = useHistory();
 
     const [, setNavShown] = useRecoilState(navShownAtom);
+    const [user] = useRecoilState(userAtom);
+
+    const [postBody, setPostBody] = useState('');
 
     useEffect(() => {
         // Hide nav when here
@@ -43,8 +47,23 @@ const Publish = () => {
                 </div>
             </div>
 
-            {/* TODO: Render textfield to represent post body
-            below that render a template post of what it would look like on a feed */}
+            {/* TODO make post 50% width and height, margin auto
+            Give caption padding, make multi line and bigger height */}
+            <Post
+                username={user}
+                profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                body={postBody}
+                likedBy={[]}
+                comments={[]}
+                date={new Date()}
+            />
+
+            <TextField
+                label='Write a caption...'
+                value={postBody}
+                onChange={e => { setPostBody(e.target.value); }}
+            />
         </>
     );
 }
