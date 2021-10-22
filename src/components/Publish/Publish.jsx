@@ -47,23 +47,25 @@ const Publish = () => {
                 </div>
             </div>
 
-            {/* TODO make post 50% width and height, margin auto
-            Give caption padding, make multi line and bigger height */}
-            <Post
-                username={user}
-                profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-                imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-                body={postBody}
-                likedBy={[]}
-                comments={[]}
-                date={new Date()}
-            />
+            <div className="publish-template">
+                <Post
+                    username={user}
+                    profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                    imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                    body={postBody}
+                    likedBy={[]}
+                    comments={[]}
+                    date={new Date()}
+                />
 
-            <TextField
-                label='Write a caption...'
-                value={postBody}
-                onChange={e => { setPostBody(e.target.value); }}
-            />
+                <TextField
+                    label='Write a caption...'
+                    value={postBody}
+                    onChange={e => { setPostBody(e.target.value); }}
+                    multiline
+                    rows={4}
+                />
+            </div>
         </>
     );
 }
