@@ -2,9 +2,11 @@ import { Button, Paper, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { navShownAtom, userAtom } from '../../atoms';
-import { withRouter } from 'react-router';
+import { withRouter, useHistory } from 'react-router';
 
 const Login = props => {
+
+    const history = useHistory();
 
     const [loginFields, setLoginFields] = useState({
         username: '',
@@ -15,7 +17,7 @@ const Login = props => {
         setLoginFields({ ...loginFields, [prop]: value });
     }
 
-    const [, setUser] = useRecoilState(userAtom);
+    const [user, setUser] = useRecoilState(userAtom);
     const [, setNavShown] = useRecoilState(navShownAtom);
 
     const tryLogin = () => {
@@ -27,6 +29,8 @@ const Login = props => {
             console.log('Could not login', err);
         }
     }
+
+    if (user != '') history.push('/');
 
     return (
         <Paper className='credential-container' elevation={15}>
