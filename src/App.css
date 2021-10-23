@@ -3,6 +3,15 @@ h1 {
   margin: 0;
 }
 
+.publish-upload-container {
+  height: 8rem;
+  display: flex;
+}
+
+.publish-upload-content {
+  margin: auto;
+}
+
 .publish-header {
   display: grid;
   grid-template-columns: 50px 1fr 50px;

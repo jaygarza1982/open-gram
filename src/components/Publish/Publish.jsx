@@ -1,17 +1,16 @@
-import { ArrowBack, Check } from '@mui/icons-material';
-import { IconButton, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import { useRecoilState } from 'recoil';
 import { navShownAtom, userAtom } from '../../atoms';
 import Post from '../Post/Post';
+import PublishHeader from './PublishHeader';
+import PublishUpload from './PublishUpload';
 
 const Publish = () => {
-
-    const history = useHistory();
-
     const [, setNavShown] = useRecoilState(navShownAtom);
     const [user] = useRecoilState(userAtom);
+
+    const [imgURL, setImgURL] = useState('');
 
     const [postBody, setPostBody] = useState('');
 
@@ -20,53 +19,43 @@ const Publish = () => {
         setNavShown(false);
 
         // Show nav on unmount
-        return ()  => {
+        return () => {
             setNavShown(true);
         }
     }, []);
 
     return (
         <>
-            <div className="publish-header">
-                <div className="publish-header-item app-header-button">
-                    <IconButton>
-                        <ArrowBack
-                            onClick={() => { history.goBack(); }}
-                        />
-                    </IconButton>
-                </div>
-                <div className="publish-header-item">
-                    <h1>New Post</h1>
-                </div>
-                <div className="publish-header-item app-header-button">
-                    <IconButton>
-                        <Check
-                            htmlColor='#007FFF'
-                        />
-                    </IconButton>
-                </div>
-            </div>
+            <PublishHeader />
 
             <div className="publish-template">
-                <Post
-                    username={user}
-                    profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-                    imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-                    body={postBody}
-                    likedBy={[]}
-                    comments={[]}
-                    date={new Date()}
-                />
-                
-                <div className="caption-textfield-container">
-                    <TextField
-                        label='Write a caption...'
-                        value={postBody}
-                        onChange={e => { setPostBody(e.target.value); }}
-                        multiline
-                        rows={4}
-                    />
-                </div>
+                {
+                    imgURL == '' ? <PublishUpload /> :
+                        (
+                            <>
+                                <Post
+                                    username={user}
+                                    profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                                    // imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                                    imgURL={imgURL}
+                                    body={postBody}
+                                    likedBy={[]}
+                                    comments={[]}
+                                    date={new Date()}
+                                />
+                                <div className="caption-textfield-container">
+                                    <TextField
+                                        label='Write a caption...'
+                                        value={postBody}
+                                        onChange={e => { setPostBody(e.target.value); }}
+                                        multiline
+                                        rows={4}
+                                    />
+                                </div>
+                            </>
+                        )
+                }
+
             </div>
         </>
     );
