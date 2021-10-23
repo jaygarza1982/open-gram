@@ -8,6 +8,10 @@ h1 {
   grid-template-columns: 50px 1fr 50px;
 }
 
+.caption-textfield-container {
+  padding: 7px
+}
+
 .nav-button-container {
   position: absolute;
   position: sticky; bottom: 0;

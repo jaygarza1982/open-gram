@@ -57,14 +57,16 @@ const Publish = () => {
                     comments={[]}
                     date={new Date()}
                 />
-
-                <TextField
-                    label='Write a caption...'
-                    value={postBody}
-                    onChange={e => { setPostBody(e.target.value); }}
-                    multiline
-                    rows={4}
-                />
+                
+                <div className="caption-textfield-container">
+                    <TextField
+                        label='Write a caption...'
+                        value={postBody}
+                        onChange={e => { setPostBody(e.target.value); }}
+                        multiline
+                        rows={4}
+                    />
+                </div>
             </div>
         </>
     );
