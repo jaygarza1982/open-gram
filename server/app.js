@@ -11,6 +11,6 @@ app.use(cookieParser());
 
 var usersRouter = require('./routes/users');
 
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
