@@ -1,18 +1,43 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import { React, useRef } from 'react';
 
-const PublishUpload = () => {
+const PublishUpload = ({setImgURL}) => {
+
+    const imgInputRef = useRef();
+
+    const handleFileInput = e => {
+        // Get chosen file, set image URL to data of file
+        const [file] = e.target.files;
+
+        const reader = new FileReader();
+
+        reader.addEventListener('load', () => {
+            setImgURL(reader.result);
+        });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
     return (
         <div className="publish-upload-container">
             <div className="publish-upload-content">
                 <Button
-                    // onClick={tryLogin}
-                    // style={{ marginTop: 10, width: '100%' }}
+                    onClick={() => { imgInputRef.current.click(); }}
                     variant='outlined'
                 >
                     Click to upload
                 </Button>
             </div>
+
+            <input
+                ref={imgInputRef}
+                type='file'
+                style={{ display: 'none' }}
+                accept='image/*'
+                onChange={handleFileInput}
+            />
         </div>
     );
 }

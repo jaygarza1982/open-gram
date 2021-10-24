@@ -30,13 +30,12 @@ const Publish = () => {
 
             <div className="publish-template">
                 {
-                    imgURL == '' ? <PublishUpload /> :
+                    imgURL == '' ? <PublishUpload setImgURL={setImgURL} /> :
                         (
                             <>
                                 <Post
                                     username={user}
                                     profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-                                    // imgURL={'https://www.w3schools.com/tags/img_girl.jpg'}
                                     imgURL={imgURL}
                                     body={postBody}
                                     likedBy={[]}
