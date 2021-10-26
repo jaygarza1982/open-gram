@@ -33,24 +33,29 @@ const Login = props => {
     if (user != '') history.push('/');
 
     return (
-        <Paper className='credential-container' elevation={15}>
-            <div className="login-title">open-gram</div>
-            <TextField
-                label='Username'
-                value={loginFields?.username}
-                onChange={e => { changeLoginFields('username', e.target.value); } }
-            />
-            <br />
-            <TextField label='Password' type='password' />
-            <br />
-            <Button
-                onClick={tryLogin}
-                style={{marginTop: 10, width: '100%'}}
-                variant='outlined'
-            >
-                Login
-            </Button>
-        </Paper>
+        <>
+            <video autoPlay muted loop style={{ position: 'fixed' }}>
+                <source src='assets/login-video.mp4' type='video/mp4' />
+            </video>
+            <Paper className='credential-container' elevation={15}>
+                <div className="login-title">open-gram</div>
+                <TextField
+                    label='Username'
+                    value={loginFields?.username}
+                    onChange={e => { changeLoginFields('username', e.target.value); }}
+                />
+                <br />
+                <TextField label='Password' type='password' />
+                <br />
+                <Button
+                    onClick={tryLogin}
+                    style={{ marginTop: 10, width: '100%' }}
+                    variant='outlined'
+                >
+                    Login
+                </Button>
+            </Paper>
+        </>
     );
 }
 
