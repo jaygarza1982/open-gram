@@ -4,9 +4,16 @@ services:
 
   supertokens:
     container_name: "open-gram-supertokens"
-    image: registry.supertokens.io/supertokens/supertokens-mongodb
+    image: registry.supertokens.io/supertokens/supertokens-postgresql
     ports:
       - 3567:3567
+    env_file: .env
+
+  postgres:
+    container_name: "open-gram-postgres"
+    image: postgres:14.0-alpine
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
     env_file: .env
 
   api-server:
@@ -19,6 +26,7 @@ services:
     ports:
       - 4000:4000
     env_file: .env
+    command: nodemon bin/www
 
   web-server:
       container_name: "open-gram-web"
