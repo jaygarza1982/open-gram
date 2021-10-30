@@ -5,13 +5,14 @@ import { navShownAtom, userAtom } from '../../atoms';
 import { withRouter, useHistory } from 'react-router';
 import axios from 'axios';
 
-const Login = props => {
+const Register = props => {
 
     const history = useHistory();
 
     const [loginFields, setLoginFields] = useState({
         email: '',
         password: '',
+        passwordConfirm: '',
     });
 
     const changeLoginFields = (prop, value) => {
@@ -23,24 +24,33 @@ const Login = props => {
 
     const tryLogin = async () => {
         try {
-            const { data } = await axios.post('/auth/signin', {
+            const { email, password, passwordConfirm } = loginFields;
+
+            if (password != passwordConfirm) throw 'Passwords do not match';
+
+            const registerForm = {
                 'formFields': [
                     {
                         'id': 'email',
-                        'value': loginFields.email
+                        'value': email
                     },
                     {
                         'id': 'password',
-                        'value': loginFields.password
+                        'value': password
                     }
                 ]
-            });
+            };
+
+            const { data } = await axios.post('/auth/signup', registerForm);
 
             console.log(data);
 
             if (data?.status !== 'OK') throw data?.status;
 
-            setUser(loginFields.email);
+            // TODO: Call login with register form, they are the same
+            // So we should be able to log users in right after registration
+
+            setUser(email);
             setNavShown(true);
             props.history.push('/');
         } catch (err) {
@@ -71,29 +81,23 @@ const Login = props => {
                     onChange={e => { changeLoginFields('password', e.target.value); }}
                 />
                 <br />
+                <TextField
+                    label='Confirm Password'
+                    type='password'
+                    value={loginFields?.passwordConfirm}
+                    onChange={e => { changeLoginFields('passwordConfirm', e.target.value); }}
+                />
+                <br />
                 <Button
                     onClick={tryLogin}
                     style={{ marginTop: 10, width: '100%' }}
                     variant='outlined'
                 >
-                    Login
+                    Register
                 </Button>
-                <br />
-
-                <div
-                    style={{
-                        marginTop: 25,
-                        float: 'left',
-                        color: '#257dd4',
-                        textDecoration: 'underline'
-                    }}
-                    onClick={() => { history.push('/register'); }}
-                >
-                    Sign Up
-                </div>
             </Paper>
         </>
     );
 }
 
-export default withRouter(Login);
+export default withRouter(Register);
