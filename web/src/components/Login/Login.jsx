@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { navShownAtom, userAtom } from '../../atoms';
 import { withRouter, useHistory } from 'react-router';
+import { useSnackbar } from 'notistack';
 import axios from 'axios';
 
 const Login = props => {
 
     const history = useHistory();
+    const { enqueueSnackbar } = useSnackbar();
 
     const [loginFields, setLoginFields] = useState({
         email: '',
@@ -44,8 +46,7 @@ const Login = props => {
             setNavShown(true);
             props.history.push('/');
         } catch (err) {
-            // TODO: notiSnack with error
-            console.log('Could not login', err);
+            enqueueSnackbar('Could not login ' + err);
         }
     }
 

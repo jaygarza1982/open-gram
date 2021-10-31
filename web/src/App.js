@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { RecoilRoot } from 'recoil';
-
+import { SnackbarProvider } from 'notistack';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Header from './components/AppHeader/Header';
@@ -36,19 +36,21 @@ function App() {
 
   return (
     <>
-      <RecoilRoot>
-        <Header />
-        <Router>
-          <Switch>
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-            <ProtectedRoute path='/' exact component={Home} />
-            <ProtectedRoute path='/profile' component={Profile} />
-            <ProtectedRoute path='/publish' component={Publish} />
-          </Switch>
-          <NavContainer />
-        </Router>
-      </RecoilRoot>
+      <SnackbarProvider maxSnack={3}>
+        <RecoilRoot>
+          <Header />
+          <Router>
+            <Switch>
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+              <ProtectedRoute path='/' exact component={Home} />
+              <ProtectedRoute path='/profile' component={Profile} />
+              <ProtectedRoute path='/publish' component={Publish} />
+            </Switch>
+            <NavContainer />
+          </Router>
+        </RecoilRoot>
+      </SnackbarProvider>
     </>
   );
 }

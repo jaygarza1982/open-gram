@@ -4,10 +4,12 @@ import { useRecoilState } from 'recoil';
 import { navShownAtom, userAtom } from '../../atoms';
 import { withRouter, useHistory } from 'react-router';
 import axios from 'axios';
+import { useSnackbar } from 'notistack';
 
 const Register = props => {
 
     const history = useHistory();
+    const { enqueueSnackbar } = useSnackbar();
 
     const [loginFields, setLoginFields] = useState({
         email: '',
@@ -54,8 +56,7 @@ const Register = props => {
             setNavShown(true);
             props.history.push('/');
         } catch (err) {
-            // TODO: notiSnack with error
-            console.log('Could not login', err);
+            enqueueSnackbar('Could not register ' + err);
         }
     }
 
