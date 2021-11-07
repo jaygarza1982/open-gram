@@ -23,6 +23,7 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+      - ./prisma:/prisma
     ports:
       - 4000:4000
     env_file: .env

@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRESQL_OPEN_GRAM")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  caption   String?
+  image     String?
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
