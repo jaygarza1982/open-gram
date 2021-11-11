@@ -58,6 +58,7 @@ const Register = props => {
 
             // Register user in non-auth DB
             try {
+                // TODO: Name should be a field in register
                 const { registerResp } = await axios.post('/api/users/register', { email, name: 'Full name' });
                 console.log(registerResp);
             } catch (error) {

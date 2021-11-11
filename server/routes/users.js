@@ -13,8 +13,6 @@ router.post('/register', verifySession(), async (req, res) => {
         email, name
       }
     });
-
-    console.log(await prisma.user.findMany({}));
   } catch (error) {
     console.log('Could not register', error);
     res.status(500).send(error);
