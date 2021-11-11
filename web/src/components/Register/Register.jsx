@@ -49,8 +49,20 @@ const Register = props => {
 
             if (data?.status !== 'OK') throw data?.status;
 
-            // TODO: Call login with register form, they are the same
-            // So we should be able to log users in right after registration
+            // Try logging in with our new credentials
+            try {
+                await axios.post('/auth/signin', registerForm);
+            } catch (error) {
+                console.log('Could not login after register', error);
+            }
+
+            // Register user in non-auth DB
+            try {
+                const { registerResp } = await axios.post('/api/users/register', { email, name: 'Full name' });
+                console.log(registerResp);
+            } catch (error) {
+                console.log('Could not register with non-auth DB', error);
+            }
 
             setUser(email);
             setNavShown(true);
