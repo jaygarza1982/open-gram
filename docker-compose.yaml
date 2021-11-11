@@ -16,6 +16,16 @@ services:
       - ./postgres:/var/lib/postgresql/data
     env_file: .env
 
+  open-gram-mongo:
+      container_name: "open-gram-mongo"
+      image: mongo:4.0.23-xenial
+      hostname: open-gram-mongo
+      ports:
+          - 27017:27017
+      volumes:
+          - ./mongo:/data/db
+      env_file: .env
+
   api-server:
     container_name: "open-gram-api-server"
     build:

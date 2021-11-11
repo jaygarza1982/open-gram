@@ -3,9 +3,12 @@ FROM node:14-alpine as build
 
 WORKDIR /app
 
-COPY . .
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install 
 
-RUN yarn install && yarn build
+COPY . .
+RUN yarn build
 
 #Build web server with built react app
 FROM nginx:1.19

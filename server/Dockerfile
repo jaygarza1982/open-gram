@@ -2,8 +2,12 @@ FROM node:14
 
 WORKDIR /app
 
-COPY . .
+RUN npm i nodemon -g
 
-RUN npm i && npm i nodemon -g
+COPY package.json .
+COPY package-lock.json .
+RUN npm i
+
+COPY . .
 
 CMD ["npm", "start"]

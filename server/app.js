@@ -6,6 +6,20 @@ var Session = require("supertokens-node/recipe/session");
 var { verifySession } = require("supertokens-node/recipe/session/framework/express");
 var { middleware, errorHandler } = require("supertokens-node/framework/express");
 var EmailPassword = require("supertokens-node/recipe/emailpassword");
+var mongoose = require('mongoose');
+
+(async () => {
+    try {
+        const { MONGO_URL } = process.env;
+
+        console.log('Attempting to connect to MongoDB through', MONGO_URL);
+        await mongoose.connect(MONGO_URL);
+
+        console.log('Connected to MongoDB successfully.');
+    } catch (error) {
+        console.log(error);
+    }
+})();
 
 supertokens.init({
     framework: "express",
@@ -47,9 +61,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 var usersRouter = require('./routes/users');
-var setupRouter = require('./routes/setup');
 
 app.use('/api/users', usersRouter);
-app.use('/api/setup', setupRouter);
 
 module.exports = app;
