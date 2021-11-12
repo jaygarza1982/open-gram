@@ -4,7 +4,7 @@ exports.register = async (req, res) => {
     try {
         const { email, name } = req.body;
 
-        await User.create({ email, name });
+        await User.create({ email, name, userId: req.session.getUserId() });
 
         res.send();
     } catch (error) {
