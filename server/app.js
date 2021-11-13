@@ -61,7 +61,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 var usersRouter = require('./routes/users');
+var postsRouter = require('./routes/posts');
 
 app.use('/api/users', usersRouter);
+app.use('/api/posts', postsRouter);
 
 module.exports = app;

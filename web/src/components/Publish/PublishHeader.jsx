@@ -2,14 +2,20 @@ import React from 'react';
 import { ArrowBack, Check } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import axios from 'axios';
 
-const PublishHeader = ({imgURL}) => {
+const PublishHeader = ({imgURL, postBody}) => {
 
     const history = useHistory();
 
-    const uploadPost = () => {
-        // TODO: Upload post as base64 here
-        console.log('Uploading post...', imgURL);
+    const uploadPost = async () => {
+        try {
+            // TODO: Upload post as base64 here
+            console.log('Uploading post...', imgURL);
+            await axios.post('/api/posts/create', { caption: postBody, content: imgURL });
+        } catch (error) {
+            console.log('Error uploading post', error);
+        }
     }
 
     return (

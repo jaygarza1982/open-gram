@@ -26,7 +26,7 @@ const Publish = () => {
 
     return (
         <>
-            <PublishHeader imgURL={imgURL} />
+            <PublishHeader imgURL={imgURL} postBody={postBody} />
 
             <div className="publish-template">
                 {
