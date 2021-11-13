@@ -10,10 +10,10 @@ const PublishHeader = ({imgURL, postBody}) => {
 
     const uploadPost = async () => {
         try {
-            // TODO: Upload post as base64 here
-            console.log('Uploading post...', imgURL);
+            // TODO: Progress bar for upload
             await axios.post('/api/posts/create', { caption: postBody, content: imgURL });
         } catch (error) {
+            // TODO: Snackbar for failure message
             console.log('Error uploading post', error);
         }
     }
