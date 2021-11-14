@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Profile = ({ postURLs }) => {
+const ProfilePosts = ({ postURLs }) => {
     return (
         <div className='profile-posts'>
             {
-                postURLs.map(url => (
+                postURLs?.map(url => (
                     <div className="profile-post">
                         <img src={url} />
                     </div>
@@ -14,4 +14,4 @@ const Profile = ({ postURLs }) => {
     )
 }
 
-export default Profile;
+export default ProfilePosts;

@@ -18,6 +18,7 @@ import Publish from './components/Publish/Publish';
 import { useRecoilState } from 'recoil';
 import { userAtom } from './atoms';
 import Register from './components/Register/Register';
+import ProfileView from './components/Profile/ProfileView';
 
 function App() {
 
@@ -44,7 +45,8 @@ function App() {
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <ProtectedRoute path='/' exact component={Home} />
-              <ProtectedRoute path='/profile' component={Profile} />
+              <ProtectedRoute path='/profile' exact component={Profile} />
+              <Route path='/profile/:user' exact component={ProfileView} />
               <ProtectedRoute path='/publish' component={Publish} />
             </Switch>
             <NavContainer />

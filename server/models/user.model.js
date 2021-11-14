@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema({
     userId: {
         type: String,
         index: true,
     },
+    email: {
+        type: String,
+        index: true,
+    },
     name: {
         type: String,
     },
-    posts: [{ type: String, ref: 'Post' }],
+    posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
 });
 
 const PostSchema = new mongoose.Schema({
-    ownerId: { type: String, ref: 'Post', index: true },
+    ownerId: { type: Schema.Types.ObjectId, ref: 'User' },
     content: { type: String },
     caption: { type: String },
 });
