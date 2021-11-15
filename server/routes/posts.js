@@ -4,6 +4,6 @@ const { verifySession } = require("supertokens-node/recipe/session/framework/exp
 const { create, list } = require('../controllers/posts.controller');
 
 router.post('/create', verifySession(), create);
-router.get('/list/:email', verifySession(), list);
+router.get('/list/:email', list);
 
 module.exports = router;

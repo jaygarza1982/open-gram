@@ -2,7 +2,7 @@ import React from 'react';
 import ProfileInfo from './ProfileInfo';
 import ProfilePosts from './ProfilePosts';
 
-const Profile = ({ postURLs }) => {
+const Profile = ({ postURLs, postKeys }) => {
     return (
         <div className='profile'>
             <ProfileInfo
@@ -13,7 +13,7 @@ const Profile = ({ postURLs }) => {
                 name='Johnny'
             />
 
-            <ProfilePosts postURLs={postURLs} />
+            <ProfilePosts postURLs={postURLs} postKeys={postKeys} />
         </div>
     )
 }

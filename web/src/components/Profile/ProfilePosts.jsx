@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProfilePosts = ({ postURLs }) => {
+const ProfilePosts = ({ postURLs, postKeys }) => {
     return (
         <div className='profile-posts'>
             {
-                postURLs?.map(url => (
-                    <div className="profile-post">
+                postURLs?.map((url, index) => (
+                    <div key={postKeys[index]} className="profile-post">
                         <img src={url} />
                     </div>
                 ))

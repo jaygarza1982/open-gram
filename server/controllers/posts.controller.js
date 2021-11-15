@@ -15,12 +15,7 @@ exports.create = async (req, res) => {
             ownerId: _id,
         });
 
-        // Create post, obtain post id
-        const postResult = await post.save();
-        const postId = postResult._id;
-
-        // Push to user's owned posts array to populate later
-        await User.update({ _id }, { $push: { posts: postId } });
+        await post.save();
 
         res.send();
     } catch (error) {
@@ -33,9 +28,11 @@ exports.list = async (req, res) => {
     try {
         const { email } = req.params;
 
-        const user = await User.find({ email }).populate('posts').exec();
+        // Find user by email to get _id, find posts owned by _id
+        const { _id } = await User.findOne({ email });
+        const posts = await Post.find({ ownerId: _id });
 
-        res.send(user);
+        res.send(posts);
     } catch (error) {
         console.log('Could not get posts', error);
         res.status(500).send(error);

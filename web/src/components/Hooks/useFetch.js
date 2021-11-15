@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default url => {
-    const [returnData, setData] = useState({});
+    const [returnData, setData] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -13,7 +13,7 @@ export default url => {
                 console.log('Failed to fetch', error);
             }
         })();
-    }, [url]);
+    }, []);
 
     return returnData;
 }
