@@ -3,6 +3,8 @@ import ProfileInfo from './ProfileInfo';
 import ProfilePosts from './ProfilePosts';
 
 const Profile = ({ postURLs, postKeys }) => {
+
+    // TODO: If there are not specified urls or keys, we need to fetch the current user
     return (
         <div className='profile'>
             <ProfileInfo
