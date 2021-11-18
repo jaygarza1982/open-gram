@@ -39,16 +39,6 @@ var app = express();
 
 app.use(middleware());
 
-// custom API that requires session verification
-app.get('/api/session', verifySession(), async (req, res) => {
-    let session = req.session;
-    res.send({
-        sessionHandle: session.getHandle(),
-        userId: session.getUserId(),
-        accessTokenPayload: session.getAccessTokenPayload(),
-    });
-});
-
 app.use(errorHandler());
 
 app.use((err, req, res, next) => {
@@ -65,5 +55,6 @@ var postsRouter = require('./routes/posts');
 
 app.use('/api/users', usersRouter);
 app.use('/api/posts', postsRouter);
+app.use('/api/session', require('./routes/session'));
 
 module.exports = app;

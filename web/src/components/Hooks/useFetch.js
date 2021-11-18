@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default url => {
     const [returnData, setData] = useState([]);
+    const [failed, setFailed] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -11,9 +12,10 @@ export default url => {
                 setData(data);
             } catch (error) {
                 console.log('Failed to fetch', error);
+                setFailed(true);
             }
         })();
     }, []);
 
-    return returnData;
+    return [returnData, failed];
 }

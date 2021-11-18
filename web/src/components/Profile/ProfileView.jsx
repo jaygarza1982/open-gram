@@ -6,7 +6,7 @@ import Profile from './Profile';
 const ProfileView = ({ }) => {
 
     const { user } = useParams();
-    const userPosts = useFetch(`/api/posts/list/${user}`);
+    const [userPosts] = useFetch(`/api/posts/list/${user}`);
 
     return (
         <div className='users-profile'>

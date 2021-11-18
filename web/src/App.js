@@ -16,9 +16,10 @@ import Login from './components/Login/Login';
 import NavContainer from './components/NavButtons/NavContainer';
 import Publish from './components/Publish/Publish';
 import { useRecoilState } from 'recoil';
-import { userAtom } from './atoms';
+import { navShownAtom, userAtom } from './atoms';
 import Register from './components/Register/Register';
 import ProfileView from './components/Profile/ProfileView';
+import axios from 'axios';
 
 function App() {
 
@@ -35,12 +36,38 @@ function App() {
       )
   }
 
+  const LoginCheck = props => {
+    const [user, setUser] = useRecoilState(userAtom);
+    const [, setNavShown] = useRecoilState(navShownAtom);
+
+    const fetchSession = async () => {
+      try {
+        // Only fetch session if we do not have a user stored locally
+        if (user != '') return;
+
+        console.log('Fetching session...');
+
+        const { data: { email } } = await axios.get('/api/session');
+
+        setUser(email);
+        setNavShown(true);
+      } catch (error) {
+        console.log('Could not fetch session on login check', error);
+      }
+    }
+
+    fetchSession();
+
+    return <></>
+  }
+
   return (
     <>
       <SnackbarProvider maxSnack={3}>
         <RecoilRoot>
           <Header />
           <Router>
+            <LoginCheck />
             <Switch>
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
