@@ -12,6 +12,9 @@ const PublishHeader = ({imgURL, postBody}) => {
         try {
             // TODO: Progress bar for upload
             await axios.post('/api/posts/create', { caption: postBody, content: imgURL });
+
+            // Redirect to profile when uploaded
+            history.push('/profile');
         } catch (error) {
             // TODO: Snackbar for failure message
             console.log('Error uploading post', error);

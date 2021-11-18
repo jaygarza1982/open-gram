@@ -56,7 +56,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({ limit: process.env.MAX_POST_SIZE }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
