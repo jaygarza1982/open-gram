@@ -8,6 +8,7 @@ services:
     ports:
       - 3567:3567
     env_file: .env
+    restart: on-failure
 
   postgres:
     container_name: "open-gram-postgres"
@@ -15,6 +16,7 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
     env_file: .env
+    restart: on-failure
 
   open-gram-mongo:
       container_name: "open-gram-mongo"
@@ -25,6 +27,7 @@ services:
       volumes:
           - ./mongo:/data/db
       env_file: .env
+      restart: on-failure
 
   api-server:
     container_name: "open-gram-api-server"
@@ -38,6 +41,7 @@ services:
       - 4000:4000
     env_file: .env
     command: nodemon bin/www
+    restart: on-failure
 
   web-server:
       container_name: "open-gram-web"
@@ -47,3 +51,4 @@ services:
           - ./web/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
           - 8010:80
+      restart: on-failure
