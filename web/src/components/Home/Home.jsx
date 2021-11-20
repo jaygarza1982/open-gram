@@ -2,6 +2,7 @@ import React from 'react';
 import Post from '../Post/Post';
 
 const Home = ({ }) => {
+    // TODO: Fetch posts from current user and display here
     return (
         <div className='posts'>
             <Post
