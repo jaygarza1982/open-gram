@@ -3,15 +3,23 @@ import { ArrowBack, Check } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { fetchCacheAtom } from '../../atoms';
 
 const PublishHeader = ({imgURL, postBody}) => {
 
     const history = useHistory();
 
+    const [, setFetchCache] = useRecoilState(fetchCacheAtom);
+
     const uploadPost = async () => {
         try {
             // TODO: Progress bar for upload
             await axios.post('/api/posts/create', { caption: postBody, content: imgURL });
+
+            // Clear cache after posting
+            // TODO: Might want to only clear the fetched user posts cache instead of whole cache
+            setFetchCache(new Object());
 
             // Redirect to profile when uploaded
             history.push('/profile');
