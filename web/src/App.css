@@ -22,10 +22,11 @@ h1 {
 }
 
 .nav-button-container {
-  position: absolute;
-  position: sticky; bottom: 0;
+  position: fixed;
+  bottom: 0;
   background-color: #fff;
   text-align: center;
+  width: 100%;
 }
 
 .nav-button-grid {
