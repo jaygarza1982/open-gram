@@ -11,8 +11,7 @@ const ProfileView = ({ }) => {
     return (
         <div className='users-profile'>
             <Profile
-                postURLs={userPosts?.map(p => p.content)}
-                postKeys={userPosts?.map(p => p._id)}
+                posts={userPosts}
             />
         </div>
     )

@@ -20,6 +20,7 @@ import { navShownAtom, userAtom } from './atoms';
 import Register from './components/Register/Register';
 import ProfileView from './components/Profile/ProfileView';
 import axios from 'axios';
+import SinglePost from './components/SinglePost/SinglePost';
 
 function App() {
 
@@ -74,6 +75,7 @@ function App() {
               <ProtectedRoute path='/' exact component={Home} />
               <ProtectedRoute path='/profile' exact component={Profile} />
               <Route path='/profile/:user' exact component={ProfileView} />
+              <Route path='/post/:postId' exact component={SinglePost} />
               <ProtectedRoute path='/publish' component={Publish} />
             </Switch>
             <NavContainer />

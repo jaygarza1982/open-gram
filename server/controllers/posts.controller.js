@@ -8,11 +8,13 @@ exports.create = async (req, res) => {
         const { content, caption } = req.body;
 
         // Find user with userId, get _id, set post ownerId to users _id
-        const { _id } = await User.findOne({ userId });
+        const { _id, email } = await User.findOne({ userId });
         const post = new Post({
             content,
             caption,
             ownerId: _id,
+            username: email,
+            datePosted: new Date(),
         });
 
         await post.save();
@@ -35,6 +37,19 @@ exports.list = async (req, res) => {
         res.send(posts);
     } catch (error) {
         console.log('Could not get posts', error);
+        res.status(500).send(error);
+    }
+}
+
+exports.findOne = async (req, res) => {
+    try {
+        const { postId } = req.params;
+
+        const post = await Post.findOne({ _id: postId });
+
+        res.send(post);
+    } catch (error) {
+        console.log('Could not get post', error);
         res.status(500).send(error);
     }
 }

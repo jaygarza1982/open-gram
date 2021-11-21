@@ -1,12 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-const ProfilePosts = ({ postURLs, postKeys }) => {
+const ProfilePosts = ({ posts }) => {
+
+    const history = useHistory();
+
     return (
         <div className='profile-posts'>
             {
-                postURLs?.map((url, index) => (
-                    <div key={postKeys[index]} className="profile-post">
-                        <img src={url} />
+                posts?.map(post => (
+                    <div
+                        onClick={() => history.push(`/post/${post._id}`)}
+                        key={post?._id}
+                        className="profile-post"
+                    >
+                        <img src={post?.content} />
                     </div>
                 ))
             }

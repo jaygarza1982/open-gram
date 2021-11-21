@@ -13,13 +13,14 @@ const UserSchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
 });
 
 const PostSchema = new mongoose.Schema({
     ownerId: { type: Schema.Types.ObjectId, ref: 'User' },
+    username: String,
     content: { type: String },
     caption: { type: String },
+    datePosted: Date,
 });
 
 const User = mongoose.model('User', UserSchema);
