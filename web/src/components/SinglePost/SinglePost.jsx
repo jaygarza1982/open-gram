@@ -7,18 +7,20 @@ const SinglePost = () => {
 
     const { postId } = useParams();
 
-    const [post] = useFetch(`/api/posts/find/${postId}`);
+    const [post] = useFetch(`/api/posts/find/${postId}`, true);
 
     return (
-        <Post
-            username={post?.username}
-            profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
-            imgURL={post?.content || ''}
-            body={post?.caption || ''}
-            // likedBy={['user1', 'user2', 'user3']}
-            // comments={['A comment']}
-            date={new Date(post?.datePosted)}
-        />
+        <div className="post">
+            <Post
+                username={post?.username}
+                profilePicURL={'https://www.w3schools.com/tags/img_girl.jpg'}
+                imgURL={post?.content || ''}
+                body={post?.caption || ''}
+                // likedBy={['user1', 'user2', 'user3']}
+                // comments={['A comment']}
+                date={new Date(post?.datePosted)}
+            />
+        </div>
     );
 }
 

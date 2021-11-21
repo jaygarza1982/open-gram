@@ -8,7 +8,7 @@ import useFetch from '../Hooks/useFetch';
 const Profile = ({ posts }) => {
 
     const [user] = useRecoilState(userAtom);
-    const [postsFromCurrentUser] = useFetch(`/api/posts/list/${user}`);
+    const [postsFromCurrentUser] = useFetch(`/api/posts/list/${user}`, true);
 
     return (
         <div className='profile'>

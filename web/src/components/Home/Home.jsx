@@ -7,7 +7,7 @@ import Post from '../Post/Post';
 const Home = ({ }) => {
     // Fetch current users posts
     const [user] = useRecoilState(userAtom);
-    const [userPosts] = useFetch(`/api/posts/list/${user}`);
+    const [userPosts] = useFetch(`/api/posts/list/${user}`, true);
 
     return (
         <div className='posts'>
