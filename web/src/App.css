@@ -67,6 +67,11 @@ h1 {
   height: 1.3em;
 }
 
+/* Last post gets more spacing so the bottom nav does not cut off */
+.post:nth-last-of-type(1):last-child {
+  margin-bottom: 56px;
+}
+
 .post {
   background-color: #fff;
 }
