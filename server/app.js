@@ -37,6 +37,12 @@ supertokens.init({
 
 var app = express();
 
+// TODO: Replace super tokens with our own go-auth server
+// app.post('/auth/register', proxy('http://localhost:8080/auth/register'));
+// app.post('/auth/login', proxy('http://localhost:8080/auth/login'));
+// app.post('/auth/logout', proxy('http://localhost:8080/auth/logout'));
+// app.get('/auth/check', proxy('http://localhost:8080/auth/check'));
+
 app.use(middleware());
 
 app.use(errorHandler());
